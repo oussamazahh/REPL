@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<head>
+    <style>
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            display: flex;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f4f4f4;
+        }
+        
+    </style>
+</head>
+<div class="sidebar">
+    <div class="user-info">
+        <span>{{ current_user.username }}</span>
+        <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
+    <div class="saved-scripts">
+        <h3>Saved Scripts</h3>
+        <ul id="script-list"></ul>
+    </div>
+</div>
+<div class="main">
+    <div class="toolbar">
+        <select id="language-selector">
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+            <option value="c">c</option>
+        </select>
+        <button id="run-btn">▶ Run</button>
+        <button id="save-btn">💾 Save</button>
+    </div>
+    <div id="editor"></div>
+    <div class="output-container">
+        <pre id="output"></pre>
+    </div>
+</div>
+{% endblock %}
